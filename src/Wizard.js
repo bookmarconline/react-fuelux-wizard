@@ -170,21 +170,26 @@ class Wizard extends React.Component {
 
         return (
           <div className="fuelux">
-            <div id="MyWizard" className="wizard">
-              <div className="steps-container" ref="stepscontainer">
-                <ul className="steps">
-                  {steps}
-                </ul>
+            {
+              this.props.header
+            }
+            <div className="block-wizard no-background">
+              <div id="MyWizard" className="wizard">
+                <div className="steps-container" ref="stepscontainer">
+                  <ul className="steps">
+                    {steps}
+                  </ul>
+                </div>
+                <div className="actions">
+                  <button type="button" className="btn btn-default btn-prev" onClick={this.onPrevClick}><span className="glyphicon glyphicon-arrow-left"></span>{this.state.prevBtnText}</button>
+                  {this.nextBtn()}
+                </div>
+                <div className="step-content" data-active={this.state.active} style={this.props.style}>
+                  {pages}
+                </div>
               </div>
-              <div className="actions">
-                <button type="button" className="btn btn-default btn-prev" onClick={this.onPrevClick}><span className="glyphicon glyphicon-arrow-left"></span>{this.state.prevBtnText}</button>
-                {this.nextBtn()}
-              </div>
-              <div className="step-content" data-active={this.state.active} style={this.props.style}>
-                {pages}
-              </div>
+            </div>
           </div>
-        </div>
     );
 
     }

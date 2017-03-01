@@ -162,10 +162,10 @@ class Wizard extends React.Component {
                     </li>);
         });
 
-        let pages = React.Children.map(this.state.pages,(child)=>{
+        let pages = React.Children.map(this.props.children,(child)=>{
           let activeClass="";
           if (child.props.badge===this.state.active) activeClass="active"
-          return (<div className={"step-pane "+activeClass} id={"step"+this.props.badge}>{child}</div>);
+          return (<div className={"step-pane "+activeClass} id={"step"+child.props.badge}>{child}</div>);
         });
 
         return (

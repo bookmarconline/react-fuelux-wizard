@@ -94,6 +94,8 @@ class Wizard extends React.Component {
       let activepage=this.state.active;
       let nextBtnText=this.state.nextBtnTextDefault;
       if(activepage>1) activepage-=1;
+      let validated = _.isFunction(this.props.onPrevPageClick) ? this.props.onPrevPageClick(activepage) : true;
+      if (!validated) return;      
       nextBtnText=this.getNextBtnText(activepage);
       this.setState({active:activepage, nextBtnText: nextBtnText});
       if(_.isFunction(this.props.onUpdate)) this.props.onUpdate(activepage);
